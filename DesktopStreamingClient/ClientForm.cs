@@ -53,7 +53,7 @@ namespace DesktopStreamingClient
                     await stream.WriteAsync(imageData, 0, imageData.Length);
                     LogMessage("Изображение отправлено на сервер.");
 
-                    await Task.Delay(50);
+                    await Task.Delay(60);
                 }
             }
             catch (Exception ex)

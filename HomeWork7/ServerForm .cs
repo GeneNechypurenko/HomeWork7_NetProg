@@ -19,7 +19,6 @@ namespace DesktopStreamingServer
             InitializeComponent();
             startServerButton.Click += StartServerButton_Click;
         }
-
         private void StartServerButton_Click(object sender, EventArgs e)
         {
             IPAddress ipAddress = IPAddress.Parse("127.0.0.1");
@@ -65,23 +64,41 @@ namespace DesktopStreamingServer
                     DisplayImage(image);
                 }
 
-                await Task.Delay(50);
+                await Task.Delay(60);
             }
         }
-
         private void DisplayImage(Image image)
         {
-            if (pictureBox.InvokeRequired)
+            if (screenPanel.InvokeRequired)
             {
-                pictureBox.Invoke(new MethodInvoker(delegate { DisplayImage(image); }));
+                screenPanel.Invoke(new MethodInvoker(delegate { DisplayImage(image); }));
             }
             else
             {
-                pictureBox.Image = image;
-                pictureBox.Invalidate();
+                RemovePreviousPictureBox();
+                AddNewPictureBox(image);
             }
         }
+        private void RemovePreviousPictureBox()
+        {
+            foreach (Control control in screenPanel.Controls)
+            {
+                if (control is PictureBox)
+                {
+                    screenPanel.Controls.Remove(control);
+                    control.Dispose();
+                }
+            }
+        }
+        private void AddNewPictureBox(Image image)
+        {
+            PictureBox newPictureBox = new PictureBox();
+            newPictureBox.Dock = DockStyle.Fill;
+            newPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            newPictureBox.Image = image;
 
+            screenPanel.Controls.Add(newPictureBox);
+        }
         private void LogMessage(string message)
         {
             if (logTextBox.InvokeRequired)

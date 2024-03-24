@@ -28,33 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            pictureBox = new PictureBox();
+            screenPanel = new Panel();
             panel2 = new Panel();
             startServerButton = new Button();
             logTextBox = new TextBox();
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
-            // panel1
+            // screenPanel
             // 
-            panel1.Controls.Add(pictureBox);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(800, 325);
-            panel1.TabIndex = 0;
-            // 
-            // pictureBox
-            // 
-            pictureBox.Dock = DockStyle.Fill;
-            pictureBox.Location = new Point(0, 0);
-            pictureBox.Name = "pictureBox";
-            pictureBox.Size = new Size(800, 325);
-            pictureBox.TabIndex = 0;
-            pictureBox.TabStop = false;
+            screenPanel.Dock = DockStyle.Fill;
+            screenPanel.Location = new Point(0, 0);
+            screenPanel.Name = "screenPanel";
+            screenPanel.Size = new Size(800, 450);
+            screenPanel.TabIndex = 0;
             // 
             // panel2
             // 
@@ -92,11 +79,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(panel2);
-            Controls.Add(panel1);
+            Controls.Add(screenPanel);
             Name = "ServerForm";
             Text = "ServerForm";
-            panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ResumeLayout(false);
@@ -104,8 +89,7 @@
 
         #endregion
 
-        private Panel panel1;
-        private PictureBox pictureBox;
+        private Panel screenPanel;
         private Panel panel2;
         private TextBox logTextBox;
         private Button startServerButton;
